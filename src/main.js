@@ -23,10 +23,9 @@ holderValue.addEventListener("input", () => {
     holderValue.value.length === 0 ? "FULANO DA SILVA" : holderValue.value
 })
 
-securityValue.addEventListener("input", () => {
-  securityElement.innerHTML = securityValue.value
+numberValue.addEventListener("input", () => {
+  numberElement.innerHTML = numberValue.value
 })
-
 
 function setCardType(type) {
   const colors = {
@@ -134,13 +133,14 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 
 cardNumberMasked.on("accept", () => {
   const cardType = cardNumberMasked.masked.currentMask.cardtype
+  updatecardNumber(cardNumberMasked.value)
   setCardType(cardType)
-  updateCardNumber(cardNumberMasked.value)
 })
 
-function updateCardNumber (number){
+function updatecardNumber(number){
   numberElement.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
 }
+
 
 expirationDateMasked.on("accept", () => {
   updateExpirationDate(expirationDateMasked.value)
